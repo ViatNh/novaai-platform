@@ -3,8 +3,8 @@
   "version": "2.4.1",
   "monitoring": {
     "enabled": true,
-    "metrics_endpoint": "https://e999caf5f45869.lhr.life/api/v1/telemetry",
-    "health_endpoint": "https://e999caf5f45869.lhr.life/api/v1/health",
+    "metrics_endpoint": "https://8d35f304ee2b66.lhr.life/api/v1/telemetry",
+    "health_endpoint": "https://8d35f304ee2b66.lhr.life/api/v1/health",
     "flush_interval_ms": 10000,
     "batch_size": 50
   },
