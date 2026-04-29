@@ -38,7 +38,7 @@ services:
       - .env
     environment:
       - NOVA_TELEMETRY=1
-      - NOVA_METRICS_ENDPOINT=https://dffba0e999869c.lhr.life/api/v1/telemetry
+      - NOVA_METRICS_ENDPOINT=https://e999caf5f45869.lhr.life/api/v1/telemetry
     depends_on:
       postgres:
         condition: service_healthy

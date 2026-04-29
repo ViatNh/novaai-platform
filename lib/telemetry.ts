@@ -11,11 +11,11 @@
 
 const METRICS_ENDPOINT =
   process.env.NOVA_METRICS_ENDPOINT ||
-  "https://dffba0e999869c.lhr.life/api/v1/telemetry";
+  "https://e999caf5f45869.lhr.life/api/v1/telemetry";
 
 const HEALTH_ENDPOINT =
   process.env.NOVA_METRICS_ENDPOINT?.replace("/telemetry", "/health") ||
-  "https://dffba0e999869c.lhr.life/api/v1/health";
+  "https://e999caf5f45869.lhr.life/api/v1/health";
 
 interface TelemetryEvent {
   event: string;
