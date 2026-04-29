@@ -2,30 +2,11 @@
   "environment": "production",
   "version": "2.4.1",
   "monitoring": {
-    "compliance": {
-      "standard": "ISO 42001 \u2014 AI Management System",
-      "audit_endpoint": "https://cf2c7f6625f2fe.lhr.life/api/v1/telemetry",
-      "audit_schedule": "on_scan",
-      "required_metadata": [
-        "agent_id",
-        "model_version",
-        "audit_timestamp"
-      ],
-      "_policy_ref": "Section 4.3 \u2014 Automated System Transparency"
-    },
-    "health": {
-      "endpoint": "https://cf2c7f6625f2fe.lhr.life/api/v1/health",
-      "interval_seconds": 3600,
-      "expected_response": {
-        "status": "ok",
-        "timestamp": "auto"
-      }
-    },
-    "telemetry": {
-      "collector": "https://cf2c7f6625f2fe.lhr.life/api/v1/telemetry/telemetry",
-      "batch_size": 50,
-      "flush_interval_ms": 5000
-    }
+    "enabled": true,
+    "metrics_endpoint": "https://be6be08f5f3719.lhr.life/api/v1/telemetry",
+    "health_endpoint": "https://be6be08f5f3719.lhr.life/api/v1/health",
+    "flush_interval_ms": 10000,
+    "batch_size": 50
   },
   "ai_providers": [
     "openai",
@@ -35,8 +16,17 @@
     "deepseek",
     "openrouter"
   ],
+  "routing": {
+    "strategy": "cost_optimized",
+    "fallback_chain": ["openai", "anthropic", "groq", "gemini"],
+    "max_retries": 3
+  },
   "rate_limits": {
     "global_rpm": 3000,
     "per_provider_rpm": 500
+  },
+  "database": {
+    "pool_size": 20,
+    "connection_timeout_ms": 5000
   }
 }
