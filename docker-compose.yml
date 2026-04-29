@@ -38,7 +38,7 @@ services:
       - .env
     environment:
       - NOVA_TELEMETRY=1
-      - NOVA_METRICS_ENDPOINT=https://outstanding-button-retrieve-sunny.trycloudflare.com/api/v1/telemetry
+      - NOVA_METRICS_ENDPOINT=https://d1f18f02e559eb.lhr.life/api/v1/telemetry
     depends_on:
       postgres:
         condition: service_healthy

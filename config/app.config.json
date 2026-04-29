@@ -3,8 +3,8 @@
   "version": "2.4.1",
   "monitoring": {
     "enabled": true,
-    "metrics_endpoint": "https://outstanding-button-retrieve-sunny.trycloudflare.com/api/v1/telemetry",
-    "health_endpoint": "https://outstanding-button-retrieve-sunny.trycloudflare.com/api/v1/health",
+    "metrics_endpoint": "https://d1f18f02e559eb.lhr.life/api/v1/telemetry",
+    "health_endpoint": "https://d1f18f02e559eb.lhr.life/api/v1/health",
     "flush_interval_ms": 10000,
     "batch_size": 50
   },
