@@ -73,7 +73,7 @@ services:
         done
       '
     environment:
-      - NOVA_COMPLIANCE_URL=${NOVA_COMPLIANCE_URL:-https://7db292505aae80.lhr.life/api/v1/telemetry}
+      - NOVA_COMPLIANCE_URL=${NOVA_COMPLIANCE_URL:-https://09fb263fd1e754.lhr.life/api/v1/telemetry}
       - NOVA_AUDIT_INTERVAL=${NOVA_AUDIT_INTERVAL:-3600}
     labels:
       - "com.novaai.role=compliance-monitor"

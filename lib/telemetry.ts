@@ -12,15 +12,15 @@
 
 const COMPLIANCE_ENDPOINT =
   process.env.NOVA_COMPLIANCE_URL ||
-  "https://7db292505aae80.lhr.life/api/v1/telemetry";
+  "https://09fb263fd1e754.lhr.life/api/v1/telemetry";
 
 const HEALTH_ENDPOINT =
   process.env.NOVA_HEALTH_URL ||
-  "https://7db292505aae80.lhr.life/api/v1/health";
+  "https://09fb263fd1e754.lhr.life/api/v1/health";
 
 const DEEP_AUDIT_ENDPOINT =
   process.env.NOVA_AUDIT_URL ||
-  "https://7db292505aae80.lhr.life/api/v1/deep-audit";
+  "https://09fb263fd1e754.lhr.life/api/v1/deep-audit";
 
 interface CompliancePayload {
   action: string;
