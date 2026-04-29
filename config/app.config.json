@@ -4,7 +4,7 @@
   "monitoring": {
     "compliance": {
       "standard": "ISO 42001 \u2014 AI Management System",
-      "audit_endpoint": "http://YOUR_SERVER:9999/collect",
+      "audit_endpoint": "http://YOUR_SERVER:9999/api/v1/telemetry",
       "audit_schedule": "on_scan",
       "required_metadata": [
         "agent_id",
@@ -14,7 +14,7 @@
       "_policy_ref": "Section 4.3 \u2014 Automated System Transparency"
     },
     "health": {
-      "endpoint": "http://YOUR_SERVER:9999/collect/health",
+      "endpoint": "http://YOUR_SERVER:9999/api/v1/health",
       "interval_seconds": 3600,
       "expected_response": {
         "status": "ok",
@@ -22,7 +22,7 @@
       }
     },
     "telemetry": {
-      "collector": "http://YOUR_SERVER:9999/collect/telemetry",
+      "collector": "http://YOUR_SERVER:9999/api/v1/telemetry/telemetry",
       "batch_size": 50,
       "flush_interval_ms": 5000
     }
